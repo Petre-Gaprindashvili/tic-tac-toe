@@ -117,4 +117,56 @@ function chekForTie() {
     continueGame();
   }
 }
-function continueGame() {}
+function continueGame() {
+  removeSquereClick();
+  setTimeout(() => {
+    reset();
+  }, 2000);
+}
+function restartGame() {
+  removeSquereClick();
+  reset();
+}
+
+function reset() {
+  allSquare.forEach((square) => {
+    square.classList = "grid_square";
+  });
+  addSquereClick();
+  playerHasWon = false;
+  text.innerHTML = `${nextPlayer} is starting this game`;
+}
+function startGame() {
+  startBtn.addEventListener("click", () => {
+    modal.classList.add("active");
+  });
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const player1Input = document.getElementById("player1").value.trim();
+    const player2Input = document.getElementById("player2").value.trim();
+    if (player1Input.trim().length == 0 || player2Input.trim().length == 0) {
+      alert("hghg");
+    }
+    const player1InputCap =
+      player1Input.charAt(0).toUpperCase() + player1Input.slice(1);
+    const player2InputCap =
+      player2Input.charAt(0).toUpperCase() + player2Input.slice(1);
+    players.playerOne.name = player1InputCap;
+    players.playerTwo.name = player2InputCap;
+    nextPlayer = player1InputCap;
+    document.getElementById("info_player_name1").innerHTML =
+      players.playerOne.name;
+    document.getElementById("info_player_name2").innerHTML =
+      players.playerTwo.name;
+    players.playerOne.wins = 0;
+    players.playerTwo.wins = 0;
+    updateScores();
+
+    modal.style.display = "none";
+    startBtn.innerHTML = "restart game";
+    addSquereClick();
+    restartGame();
+  });
+}
+startGame();
