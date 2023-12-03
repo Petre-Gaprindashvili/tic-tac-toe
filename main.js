@@ -15,8 +15,8 @@ const startBtn = document.getElementById("btn");
 const modal = document.getElementById("modal");
 
 const players = {
-  playerOne: { name: "peter", wins: 0 },
-  playerTwo: { name: "nika", wins: 0 },
+  playerOne: { name: "", wins: 0 },
+  playerTwo: { name: "", wins: 0 },
 };
 
 let move = 1;
@@ -90,7 +90,11 @@ function updateScores() {
   playerTwoScore.innerHTML = players.playerTwo.wins;
 }
 function playerWon() {
-  text.innerHTML = `${pastPlayer}won! `;
+  text.innerHTML = `${pastPlayer}Won the game! `;
+  text.style.border = "1px solid #fff ";
+  text.style.fontSize = "24px";
+  text.style.color = "#fff";
+
   playerHasWon = true;
   continueGame();
 }
