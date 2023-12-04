@@ -150,7 +150,7 @@ function startGame() {
     const player1Input = document.getElementById("player1").value.trim();
     const player2Input = document.getElementById("player2").value.trim();
     if (player1Input.trim().length == 0 || player2Input.trim().length == 0) {
-      Swal.fire("please enter player name");
+      Swal.fire("Please fill out this field");
     }
     const player1InputCap =
       player1Input.charAt(0).toUpperCase() + player1Input.slice(1);
